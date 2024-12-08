@@ -26,6 +26,25 @@ int main()
         cout << "Sum of ASCII values: " << sum_ascii(test_string) << endl;
     }
     
+    ifstream inFile("lab-37-data.txt");
+    if (!inFile) {
+        cerr << "file not opened" << endl;
+        return 1;
+    }
+
+    string record;
+    int grand_total = 0;
+    while (getline(inFile, record)) {
+        int record_sum = sum_ascii(record);
+        grand_total += record_sum;
+    }
+    cout << "Grand total of ASCII sum: " << grand_total << endl;
+
+
+
+
+    inFile.close();
+
     return 0;
 }
 /*

@@ -54,10 +54,43 @@ int main()
         cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
-    }
 
+        switch (choice)
+        {
+        case 1:
+            print_100(hash_table);
+            break;
+        case 2:
+            int key;
+            cout << "Enter key to search: ";
+            cin >> key;
+            search_key(hash_table, key);
+            break;
+        case 3:
+            string code;
+            cout << "Enter code to add: ";
+            cin >> code;
+            add_key(hash_table, code);
+            break;
+        case 4:
+            int key;
+            cout << "Enter key to remove: ";
+            cin >> key;
+            remove_key(hash_table, key);
+            break;
+        case 5:
+            int old_key, new_key;
+            cout << "Enter the key to modify: ";
+            cin >> old_key;
+            cout << "Enter the new key"
+            break;
+        case 6:
 
-
+            break;
+        default:
+            break;
+        }
+    }    
 
 
     return 0;
@@ -109,9 +142,24 @@ void add_key(map<int, list<string>> &hash_table, string &code) {
 }
 
 void remove_key(map<int, list<string>> &hash_table, int key) {
-    
+    auto it = hash_table.find(key);
+    if (it != hash_table.end()) {
+        hash_table.erase(it);
+        cout << key << " removed" << endl;
+    } else {
+        cout << key << " not found" << endl;
+    }
 }
 
 void modify_key(map<int, list<string>> &hash_table, int old_key, int new_key) {
-
+    auto it = hash_table.find(old_key);
+    if (it != hash_table.end()) {
+        for (string &code : it->second) {
+            hash_table[new_key].push_back(code);
+        }
+        hash_table.erase(it);
+        cout << old_key << " modified to " << new_key << endl;
+    } else {
+        cout << old_key << " not found" << endl;
+    }
 }

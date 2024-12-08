@@ -8,7 +8,8 @@ int gen_hash_index(string &s);
 void print_100(map<int, list<string>> &hash_table);
 void search_key(map<int, list<string>> &hash_table, int key);
 void add_key(map<int, list<string>> &hash_table, string &code);
-void modify_key(map<int, list<string>> &hash_table, int key);
+void remove_key(map<int, list<string>> &hash_table, int key);
+void modify_key(map<int, list<string>> &hash_table, int old_key, int new_key);
 
 int main()
 {
@@ -48,8 +49,9 @@ int main()
         cout << "1. Print the first 100 entries" << endl;
         cout << "2. Search for a key" << endl;
         cout << "3. Add a key" << endl;
-        cout << "4. Modify a key" << endl;
-        cout << "5. Exit" << endl;
+        cout << "4. Remove a key" << endl;
+        cout << "5. Modify a key" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
     }
@@ -88,13 +90,28 @@ void print_100(map<int, list<string>> &hash_table) {
 }
 
 void search_key(map<int, list<string>> &hash_table, int key) {
-
+    auto it = hash_table.find(key);
+    if (it != hash_table.end()) {
+        cout << "Hash Index: " << key << " / Codes: ";
+        for (string &code : it->second) {
+            cout << code << " ";
+        }
+        cout << endl;
+    } else {
+        cout << "Key not found" << endl;
+    }
 }
 
 void add_key(map<int, list<string>> &hash_table, string &code) {
-
+    int hash_index = gen_hash_index(code);
+    hash_table[hash_index].push_back(code);
+    cout << code << " added to " << hash_index << endl;
 }
 
-void modify_key(map<int, list<string>> &hash_table, int key) {
+void remove_key(map<int, list<string>> &hash_table, int key) {
+    
+}
+
+void modify_key(map<int, list<string>> &hash_table, int old_key, int new_key) {
 
 }

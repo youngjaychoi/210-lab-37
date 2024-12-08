@@ -23,12 +23,8 @@ int main()
     string test_targets[] = {"536B9DFC93AF", "1DA9D64D02A0", "666D109AA22E", "E1D2665B21EA"};
     for (string test_string : test_targets) {
         cout << "Test string: " << test_string << endl;
-        cout << 
+        cout << "Sum of ASCII values: " << sum_ascii(test_string) << endl;
     }
-
-
-
-
     
     return 0;
 }

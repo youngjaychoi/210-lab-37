@@ -54,8 +54,12 @@ int main()
         if (count >= 100)
             break;
         cout << "Hash Index: " << entry.first << " / Codes: ";
+        int countS = 0;
         for (string &code : entry.second) {
+            if (countS >= 10)                       // I add 10 limit display of codes per index for convenience.
+                break;
             cout << code << " ";
+            countS++;
         }
         cout << endl;
         count++;

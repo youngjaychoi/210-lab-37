@@ -49,11 +49,17 @@ int main()
         hash_table[hash_index].push_back(record);
     }
 
-    
-
-
-
-
+    int count = 0;
+    for (auto &entry : hash_table) {
+        if (count >= 100)
+            break;
+        cout << "Hash Index: " << entry.first << " / Codes: ";
+        for (string &code : entry.second) {
+            cout << code << " ";
+        }
+        cout << endl;
+        count++;
+    }
 
     inFile.close();
 

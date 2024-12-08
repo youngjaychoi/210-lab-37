@@ -4,13 +4,11 @@
 #include <list>
 using namespace std;
 
-int gen_hash_index(string &s) {
-    int sum = 0;
-    for (char c : s) {
-        sum += (int)c;
-    }
-    return sum % 97;
-}
+int gen_hash_index(string &s);
+void print_100(map<int, list<string>> &hash_table);
+void search_key(map<int, list<string>> &hash_table, int key);
+void add_key(map<int, list<string>> &hash_table, string &code);
+void modify_key(map<int, list<string>> &hash_table, int key);
 
 int main()
 {
@@ -34,13 +32,6 @@ int main()
         return 1;
     }
 
-    // int grand_total = 0;
-    // while (getline(inFile, record)) {
-    //     int record_sum = sum_ascii(record);
-    //     grand_total += record_sum;
-    // }
-    // cout << "Grand total of ASCII sum: " << grand_total << endl;
-
     map<int, list<string>> hash_table;
     
     string record;
@@ -49,6 +40,36 @@ int main()
         hash_table[hash_index].push_back(record);
     }
 
+    inFile.close();
+
+    int choice = 0;
+    do {
+        cout << "\nMenu:" << endl;
+        cout << "1. Print the first 100 entries" << endl;
+        cout << "2. Search for a key" << endl;
+        cout << "3. Add a key" << endl;
+        cout << "4. Modify a key" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+    }
+
+
+
+
+
+    return 0;
+}
+
+int gen_hash_index(string &s) {
+    int sum = 0;
+    for (char c : s) {
+        sum += (int)c;
+    }
+    return sum % 97;
+}
+
+void print_100(map<int, list<string>> &hash_table) {
     int count = 0;
     for (auto &entry : hash_table) {
         if (count >= 100)
@@ -64,15 +85,16 @@ int main()
         cout << endl;
         count++;
     }
-
-    inFile.close();
-
-    return 0;
 }
-/*
-These targets are present in the dataset and can be used for testing:
-536B9DFC93AF
-1DA9D64D02A0
-666D109AA22E
-E1D2665B21EA
-*/
+
+void search_key(map<int, list<string>> &hash_table, int key) {
+
+}
+
+void add_key(map<int, list<string>> &hash_table, string &code) {
+
+}
+
+void modify_key(map<int, list<string>> &hash_table, int key) {
+
+}

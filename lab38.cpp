@@ -56,6 +56,8 @@ int main()
         cout << "Enter your choice: ";
         cin >> choice;
 
+        cin.ignore();
+
         switch (choice)
         {
         case 1:
@@ -64,23 +66,28 @@ int main()
         case 2:
             cout << "Enter key to search: ";
             cin >> key;
+            cin.ignore();
             search_key(hash_table, key);
             break;
         case 3:
             cout << "Enter code to add: ";
             cin >> code;
+            cin.ignore();
             add_key(hash_table, code);
             break;
         case 4:
             cout << "Enter key to remove: ";
             cin >> key;
+            cin.ignore();
             remove_key(hash_table, key);
             break;
         case 5:
             cout << "Enter the key to modify: ";
             cin >> old_key;
+            cin.ignore();
             cout << "Enter the new key: ";
             cin >> new_key;
+            cin.ignore();
             modify_key(hash_table, old_key, new_key);
             break;
         case 6:

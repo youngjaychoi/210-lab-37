@@ -13,19 +13,19 @@ void modify_key(map<int, list<string>> &hash_table, int old_key, int new_key);
 
 int main()
 {
-    char a = 'A';
-    cout << a << endl;
-    cout << (int)a << endl;
+    // char a = 'A';
+    // cout << a << endl;
+    // cout << (int)a << endl;
 
-    int b = 66;
-    cout << b << endl;
-    cout << (char)b << endl;
+    // int b = 66;
+    // cout << b << endl;
+    // cout << (char)b << endl;
 
-    string test_targets[] = {"536B9DFC93AF", "1DA9D64D02A0", "666D109AA22E", "E1D2665B21EA"};
-    for (string test_string : test_targets) {
-        cout << "Test string: " << test_string << endl;
-        cout << "Hash index: " << gen_hash_index(test_string) << endl;
-    }
+    // string test_targets[] = {"536B9DFC93AF", "1DA9D64D02A0", "666D109AA22E", "E1D2665B21EA"};
+    // for (string test_string : test_targets) {
+    //     cout << "Test string: " << test_string << endl;
+    //     cout << "Hash index: " << gen_hash_index(test_string) << endl;
+    // }
     
     ifstream inFile("lab-37-data.txt");
     if (!inFile) {
@@ -43,7 +43,8 @@ int main()
 
     inFile.close();
 
-    int choice = 0;
+    int choice = 0, key = 0, old_key = 0, new_key = 0;
+    string code;
     do {
         cout << "\nMenu:" << endl;
         cout << "1. Print the first 100 entries" << endl;
@@ -61,37 +62,34 @@ int main()
             print_100(hash_table);
             break;
         case 2:
-            int key;
             cout << "Enter key to search: ";
             cin >> key;
             search_key(hash_table, key);
             break;
         case 3:
-            string code;
             cout << "Enter code to add: ";
             cin >> code;
             add_key(hash_table, code);
             break;
         case 4:
-            int key;
             cout << "Enter key to remove: ";
             cin >> key;
             remove_key(hash_table, key);
             break;
         case 5:
-            int old_key, new_key;
             cout << "Enter the key to modify: ";
             cin >> old_key;
-            cout << "Enter the new key"
+            cout << "Enter the new key: ";
+            cin >> new_key;
+            modify_key(hash_table, old_key, new_key);
             break;
         case 6:
-
+            cout << "Exiting..." << endl;
             break;
         default:
-            break;
+            cout << "Invalid choice. Enter again" << endl;
         }
-    }    
-
+    } while (choice != 6);
 
     return 0;
 }

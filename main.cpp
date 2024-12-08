@@ -1,13 +1,15 @@
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
-int sum_ascii(string &s) {
+int gen_hash_index(string &s) {
     int sum = 0;
     for (char c : s) {
         sum += (int)c;
     }
-    return sum;
+    return sum % 97;
 }
 
 int main()
@@ -23,7 +25,7 @@ int main()
     string test_targets[] = {"536B9DFC93AF", "1DA9D64D02A0", "666D109AA22E", "E1D2665B21EA"};
     for (string test_string : test_targets) {
         cout << "Test string: " << test_string << endl;
-        cout << "Sum of ASCII values: " << sum_ascii(test_string) << endl;
+        cout << "Hash index: " << gen_hash_index(test_string) << endl;
     }
     
     ifstream inFile("lab-37-data.txt");
@@ -32,13 +34,23 @@ int main()
         return 1;
     }
 
+    // int grand_total = 0;
+    // while (getline(inFile, record)) {
+    //     int record_sum = sum_ascii(record);
+    //     grand_total += record_sum;
+    // }
+    // cout << "Grand total of ASCII sum: " << grand_total << endl;
+
+    map<int, list<string>> hash_table;
+    
     string record;
-    int grand_total = 0;
     while (getline(inFile, record)) {
-        int record_sum = sum_ascii(record);
-        grand_total += record_sum;
+        int hash_index = gen_hash_index(record);
+        hash_table[hash_index].push_back(record);
     }
-    cout << "Grand total of ASCII sum: " << grand_total << endl;
+
+    
+
 
 
 
